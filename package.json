@@ -3,19 +3,49 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest"
+	    "server": "node server.js",
+	    "start": "node node_modules/react-native/local-cli/cli.js start",
+	    "ios": "open ios/holmes.xcodeproj/project.xcworkspace",
+	    "test": "jest"
 	},
-	"dependencies": {
-		"react": "16.0.0-alpha.12",
-		"react-native": "0.45.1"
-	},
-	"devDependencies": {
-		"babel-jest": "20.0.3",
-		"babel-preset-react-native": "2.0.0",
-		"jest": "20.0.4",
-		"react-test-renderer": "16.0.0-alpha.12"
-	},
+	"rnpm": {
+    	"assets": [
+      		"./assets/fonts"
+    	]
+  	},
+  	"repository": {
+    	"type": "git",
+    	"url": "https://github.com/osledrobilka/holmes-game"
+  	},
+  	"author": "Ben Young (ben@jbenjaminy.com)",
+  	"license": "MIT",
+  	"bugs": {
+    	"url": "https://github.com/osledrobilka/holmes-game/issues"
+  	},
+  	"homepage": "",
+  	"dependencies": {
+    	"apsl-react-native-button": "^3.0.2",
+    	"firebase": "^3.6.9",
+    	"moment": "^2.18.1",
+    	"react": "15.4.2",
+    	"react-native": "0.40.0",
+    	"react-native-drawer": "^2.3.0",
+    	"react-native-vector-icons": "^4.0.0",
+    	"react-redux": "^5.0.2",
+    	"react-test-renderer": "^15.5.4",
+    	"redux": "^3.6.0",
+    	"redux-thunk": "^2.2.0",
+    	"uuid": "3.0.1"
+  	},
+  	"devDependencies": {
+	    "babel-jest": "18.0.0",
+	    "babel-plugin-transform-object-rest-spread": "^6.20.2",
+	    "babel-preset-react-native": "1.9.1",
+	    "eslint": "^3.8.1",
+	    "eslint-config-rallycoding": "^3.2.0",
+	    "invariant": "^2.2.2",
+	    "jest": "^20.0.1"
+  	},
 	"jest": {
 		"preset": "react-native"
 	}
