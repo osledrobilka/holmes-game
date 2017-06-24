@@ -1,14 +1,12 @@
 /* eslint no-underscore-dangle: 0 */
 import React, { Component } from 'react';
-import { View, AsyncStorage } from 'react-native';
+import { View, AsyncStorage, AlertIOS } from 'react-native';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import ReduxThunk from 'redux-thunk';
 
 import firebase from 'firebase';
-import jwtDecode from 'jwt-decode';
 
 import config from '../firebase-config';
+import store from './store';
 import * as actions from './actions';
 import reducers from './reducers';
 import Board from './components/board';
@@ -19,38 +17,38 @@ class App extends Component {
     componentWillMount() {
         firebase.initializeApp(config);
 
-        firebase.auth().onAuthStateChanged(user => {
-            console.log('user (app) --> ', user);
-            this.refreshToken();
-        });
-    }
-
-    refreshToken(force = false) {
-        const ref = firebase.auth().currentUser;
-        if (ref !== null) {
-            return ref.getToken(force).then(encodedToken => {
-                const token = jwtDecode(encodedToken);
-                const value = token.exp;
-                const secondsToExpiry = value - (new Date().getTime() / 1000);
-                const fiveMins = 45 * 60;
-                setTimeout(() => this.refreshToken(true), (secondsToExpiry - fiveMins) * 1000);
-                console.log('refreshToken, seconds to expiry --> ', value);
-                AsyncStorage.multiSet([['@AUTH_EXPIRY', JSON.stringify(value)], ['@UID', ref.uid]]);
+        AsyncStorage.getItem('@USER')
+            .then(USER => {
+                if (USER === null) {
+                    AlertIOS.prompt(
+                        'HAPPY BIRTHDAY TO MATT!',
+                        'Enter your username:',
+                        [{
+                            text: 'Okay',
+                            onPress: (input) => {
+                                AsyncStorage.setItem('@USER', input)
+                                    .then(() => {
+                                        store.dispatch(actions.updateState({
+                                            prop: 'USER',
+                                            value: input
+                                        }));
+                                    });
+                            },
+                        },
+                        null
+                        ],
+                        'plain-text'
+                    );
+                } else {
+                    store.dispatch(actions.updateState({
+                        prop: 'USER',
+                        value: USER
+                    }));
+                }
             });
-        } else if (ref === null) {
-            AsyncStorage.multiRemove(['@AUTH_EXPIRY', '@UID']);
-        }
-
-        return;
     }
 
     render() {
-        const store = createStore(
-            reducers,
-            {},
-            applyMiddleware(ReduxThunk)
-        );
-
         return (
             <Provider store={store}>
                 <View style={{ flex: 1 }}>
