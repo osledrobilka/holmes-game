@@ -13,7 +13,7 @@ export const newGame = () => ({
     type: NEW_GAME
 });
 
-export const updateScore = ({ action, amount }) => ({
+export const updateScore = ({ sign, amount }) => ({
     type: UPDATE_SCORE,
-    data: { action, amount }
+    data: { sign, amount }
 });

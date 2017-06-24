@@ -8,9 +8,7 @@ import firebase from 'firebase';
 import config from '../firebase-config';
 import store from './store';
 import * as actions from './actions';
-import reducers from './reducers';
-import Board from './components/board';
-import Dash from './components/dash';
+import Main from './components/main';
 
 class App extends Component {
 
@@ -52,8 +50,7 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <View style={{ flex: 1 }}>
-                    <Board />
-                    <Dash />
+                    <Main />
                 </View>
             </Provider>
         );
