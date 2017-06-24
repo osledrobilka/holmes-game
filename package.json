@@ -26,7 +26,6 @@
   "dependencies": {
     "apsl-react-native-button": "^3.0.2",
     "firebase": "^3.6.9",
-    "jwt-decode": "^2.2.0",
     "moment": "^2.18.1",
     "react": "15.4.2",
     "react-native": "0.40.0",

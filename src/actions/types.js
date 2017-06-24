@@ -1,0 +1,4 @@
+export const GAMES_FETCH_SUCCESS = 'GAMES_FETCH_SUCCESS';
+export const NEW_GAME = 'NEW_GAME';
+export const UPDATE_SCORE = 'UPDATE_SCORE';
+export const UPDATE_STATE = 'UPDATE_STATE';
