@@ -6,6 +6,7 @@ import {
 const INITIAL_STATE = {
      score: 0,
      lastScore: null,
+     inGame: false
  };
 
  export default (state = INITIAL_STATE, action) => {
