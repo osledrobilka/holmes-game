@@ -2,8 +2,14 @@ import firebase from 'firebase';
 import uuid from 'uuid';
 
 import {
-    GAMES_FETCH_SUCCESS
+    GAMES_FETCH_SUCCESS,
+    UPDATE_STATE
 } from './types';
+
+export const updateState = ({ prop, value }) => ({
+    type: UPDATE_STATE,
+    data: { prop, value }
+});
 
 export const gamesFetch = () => {
     return (dispatch) => {

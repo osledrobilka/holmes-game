@@ -1,12 +1,14 @@
 import {
     NEW_GAME,
-    UPDATE_SCORE
+    UPDATE_SCORE,
+    UPDATE_SELECTION
 } from '../actions/types';
 
 const INITIAL_STATE = {
      score: 0,
      lastScore: null,
-     inGame: false
+     inGame: false,
+     selected: null
  };
 
  export default (state = INITIAL_STATE, action) => {
@@ -14,6 +16,11 @@ const INITIAL_STATE = {
          case NEW_GAME: {
              const lastScore = state.score;
              return { ...state, ...INITIAL_STATE, lastScore };
+        }
+        case UPDATE_SELECTION: {
+            const selected = action.data.id || null;
+
+            return { ...state, selected };
         }
          case UPDATE_SCORE: {
              const { sign, amount } = action.data;

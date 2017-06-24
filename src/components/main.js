@@ -1,46 +1,66 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
+import { View, AlertIOS, AsyncStorage } from 'react-native';
 
 import * as actions from '../actions';
 import Dash from './dash';
 import Board from './board';
+import Timer from './timer';
 
 class Main extends Component {
-    componentWillReceiveProps(nextProps) {
-        const { selected } = this.props;
+    componentWillMount() {
+        const { app, updateState } = this.props;
 
-        if (nextProps.selected !== selected && nextProps.selected !== null) {
-            this.scoreSelection(nextProps);
+        if (app.user === '') {
+                AsyncStorage.getItem('@USER')
+                    .then(USER => {
+                        if (USER === null) {
+                            AlertIOS.prompt(
+                                'HAPPY BIRTHDAY TO MATT!',
+                                'Enter your name to play Matt\'s birthday game:',
+                                [{
+                                    text: 'Okay',
+                                    onPress: (input) => {
+                                        AsyncStorage.setItem('@USER', input)
+                                            .then(() => {
+                                                updateState({
+                                                    prop: 'USER',
+                                                    value: input
+                                                });
+                                            });
+                                    },
+                                },
+                                null
+                                ],
+                                'plain-text'
+                            );
+                        } else {
+                            updateState({
+                                prop: 'USER',
+                                value: USER
+                            });
+                        }
+                    });
         }
     }
 
-    scoreSelection(nxtProps) {
-        const {
-            selected,
-            spaces
-        } = nxtProps;
-        const {
-            disactivateSpace,
-            selectSpace,
-            updateScore
-        } = this.props;
+    renderTimer() {
+        const { game } = this.props;
 
-        if (spaces[selected] === null) {
-            updateScore({ sign: '-', amount: 100 });
-            selectSpace(selected);
-        } else if (spaces[selected] !== null) {
-            updateScore({ sign: '+', amount: spaces[selected] });
-            selectSpace(selected);
-            disactivateSpace(selected);
+        if (game.inGame) {
+            return <Timer />;
         }
+
+        return null;
     }
 
     render() {
-        const { selected, spaces, app, game } = this.props;
+        const { app, game } = this.props;
+
         return (
             <View style={{ flex: 1 }}>
-                <Board selected={selected} spaces={spaces} />
+                {this.renderTimer()}
+                <Board inGame={game.inGame} />
                 <Dash app={app} game={game} />
             </View>
         );
@@ -48,7 +68,7 @@ class Main extends Component {
 }
 
 export default connect(state => {
-    const { game, app, selected, spaces } = state;
+    const { game, app } = state;
 
-    return { game, app, selected, spaces };
+    return { game, app };
 }, actions)(Main);
