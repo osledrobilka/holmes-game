@@ -4,7 +4,7 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-     user: '',
+     USER: null,
      games: [],
      userBestScore: null,
      userScoreHistory: [],

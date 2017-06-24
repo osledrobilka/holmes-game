@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
 
 import Button from 'apsl-react-native-button';
@@ -14,27 +14,58 @@ class Dash extends Component {
         }
 
         return (
-            <Button
-                onPress={() => { this.props.newGame(); }}
-                style={{
-                    backgroundColor: 'blue',
-                    borderColor: 'blue',
-                    borderRadius: 5,
-                    marginRight: 10,
-                    marginLeft: 10
-                }}
-            >
-                <Text
+            <View>
+                <Button
+                    onPress={() => { this.props.newGame(); }}
                     style={{
-                        color: 'white',
-                        letterSpacing: 2,
-                        fontSize: 20
+                        backgroundColor: 'blue',
+                        borderColor: 'blue',
+                        borderRadius: 5,
+                        marginRight: 10,
+                        marginLeft: 10
                     }}
-                    numberOfLines={1}
                 >
-                    Start Game
-                </Text>
-            </Button>
+                    <Text
+                        style={{
+                            color: 'white',
+                            letterSpacing: 2,
+                            fontSize: 20
+                        }}
+                        numberOfLines={1}
+                    >
+                        Start Game
+                    </Text>
+                </Button>
+                <Button
+                    onPress={() => {
+                        AsyncStorage.removeItem('@USER')
+                            .then(() => {
+                                this.props.updateState({
+                                    prop: 'USER',
+                                    value: null
+                                });
+                            });
+                    }}
+                    style={{
+                        backgroundColor: 'white',
+                        borderColor: 'white',
+                        borderRadius: 5,
+                        marginRight: 10,
+                        marginLeft: 10
+                    }}
+                >
+                    <Text
+                        style={{
+                            color: 'blue',
+                            letterSpacing: 2,
+                            fontSize: 20
+                        }}
+                        numberOfLines={1}
+                    >
+                        Change User
+                    </Text>
+                </Button>
+            </View>
         );
     }
 
@@ -47,9 +78,8 @@ class Dash extends Component {
     }
 }
 
-export default connect((state, ownProps) => {
-    const { game } = state;
+export default connect(({ game }) => {
     const inGame = game.inGame;
 
-    return { inGame, ownProps };
+    return { inGame };
 }, actions)(Dash);
