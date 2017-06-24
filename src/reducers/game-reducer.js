@@ -15,7 +15,7 @@ const INITIAL_STATE = {
  export default (state = INITIAL_STATE, action) => {
      switch (action.type) {
          case NEW_GAME: {
-             const lastScore = state.score;
+             const lastScore = state.score || null;
              return { ...state, ...INITIAL_STATE, lastScore, inGame: true };
         }
         case END_GAME:

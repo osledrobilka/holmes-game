@@ -5,7 +5,7 @@ import { View, AlertIOS, AsyncStorage } from 'react-native';
 import * as actions from '../actions';
 import Dash from './dash';
 import Board from './board';
-import Timer from './timer';
+// import Timer from './timer';
 
 class Main extends Component {
     componentWillMount() {
@@ -29,8 +29,7 @@ class Main extends Component {
                                                 });
                                             });
                                     },
-                                },
-                                null
+                                }
                                 ],
                                 'plain-text'
                             );
@@ -44,24 +43,24 @@ class Main extends Component {
         }
     }
 
-    renderTimer() {
-        // const { game } = this.props;
-        //
-        // if (game.inGame) {
-        //     return <Timer />;
-        // }
-
-        return null;
-    }
+    // renderTimer() {
+    //     // const { game } = this.props;
+    //     //
+    //     // if (game.inGame) {
+    //     //     return <Timer />;
+    //     // }
+    //     // {this.renderTimer()}
+    //
+    //     return null;
+    // }
 
     render() {
-        const { app, game } = this.props;
+        const { game } = this.props;
 
         return (
             <View style={{ flex: 1 }}>
-                {this.renderTimer()}
                 <Board inGame={game.inGame} />
-                <Dash app={app} game={game} />
+                <Dash />
             </View>
         );
     }
