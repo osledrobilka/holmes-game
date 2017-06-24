@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, AlertIOS } from 'react-native';
+import { View } from 'react-native';
 
 import * as actions from '../actions';
 import Dash from './dash';
@@ -9,7 +9,7 @@ import Board from './board';
 class Main extends Component {
     componentWillReceiveProps(nextProps) {
         const { selected } = this.props;
-        
+
         if (nextProps.selected !== selected && nextProps.selected !== null) {
             this.scoreSelection(nextProps);
         }
@@ -30,17 +30,25 @@ class Main extends Component {
             updateScore({ sign: '-', amount: 100 });
             selectSpace(selected);
         } else if (spaces[selected] !== null) {
-            updateScore({ sign: '+', amount: state[selected] });
+            updateScore({ sign: '+', amount: spaces[selected] });
             selectSpace(selected);
             disactivateSpace(selected);
         }
     }
 
     render() {
-        const { selected } = this.props;
-        return {
+        const { selected, spaces, app, game } = this.props;
+        return (
             <View style={{ flex: 1 }}>
-                <Board />
+                <Board selected={selected} spaces={spaces} />
+                <Dash app={app} game={game} />
             </View>
-        }
+        );
     }
+}
+
+export default connect(state => {
+    const { game, app, selected, spaces } = state;
+
+    return { game, app, selected, spaces };
+}, actions)(Main);
