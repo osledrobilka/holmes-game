@@ -9,38 +9,49 @@ const holmesHeadImgBack = require('../../ios/holmes-head-back.png');
 
 const Board = ({ inGame }) => {
     let holmesHeadImg = holmesHeadImgProfile;
+    let rows = () => {
+        return null;
+    };
 
     if (inGame) {
         holmesHeadImg = holmesHeadImgBack;
+        rows = () => {
+            return (
+                <View style={{ flex: 1 }}>
+                    <Row key={1} />
+                    <Row key={2} />
+                    <Row key={3} />
+                    <Row key={4} />
+                </View>
+            );
+        };
     }
+
     return (
         <Image
             style={{
                 flex: 1,
-                width: 300,
-                height: 300
+                width: null,
+                height: null
             }}
             source={grassImg}
         >
             <Image
                 style={{
                     flex: 1,
-                    width: 300,
-                    height: 300,
+                    width: 320,
+                    height: 320,
                     backgroundColor: 'transparent',
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}
                 source={dirtImg}
             >
-                <Row key={'row_1'} />
-                <Row key={'row_2'} />
-                <Row key={'row_3'} />
-                <Row key={'row_4'} />
+                {rows}
             </Image>
                 <View
                     style={{
-                        width: 300,
+                        width: 320,
                         height: 150
                     }}
                 >
@@ -48,7 +59,7 @@ const Board = ({ inGame }) => {
                         style={{
                             flex: 1,
                             resizeMode: 'stretch',
-                            zIndex: 99
+                            zIndex: 10
                         }}
                         source={holmesHeadImg}
                     />

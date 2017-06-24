@@ -10,6 +10,10 @@ export const newGame = () => ({
     type: NEW_GAME
 });
 
+export const endGame = () => ({
+    type: END_GAME
+});
+
 export const updateScore = ({ sign, amount }) => ({
     type: UPDATE_SCORE,
     data: { sign, amount }

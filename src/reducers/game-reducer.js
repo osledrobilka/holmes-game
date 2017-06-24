@@ -1,4 +1,5 @@
 import {
+    END_GAME,
     NEW_GAME,
     UPDATE_SCORE,
     UPDATE_SELECTION
@@ -15,8 +16,10 @@ const INITIAL_STATE = {
      switch (action.type) {
          case NEW_GAME: {
              const lastScore = state.score;
-             return { ...state, ...INITIAL_STATE, lastScore };
+             return { ...state, ...INITIAL_STATE, lastScore, inGame: true };
         }
+        case END_GAME:
+            return { ...state, inGame: false };
         case UPDATE_SELECTION: {
             const selected = action.data.id || null;
 

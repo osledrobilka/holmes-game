@@ -5,8 +5,7 @@
   "scripts": {
     "server": "node server.js",
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "ios": "open ios/holmes.xcodeproj/project.xcworkspace",
-    "test": "jest"
+    "ios": "open ios/holmes.xcodeproj/project.xcworkspace"
   },
   "rnpm": {
     "assets": [
@@ -38,15 +37,10 @@
     "uuid": "3.0.1"
   },
   "devDependencies": {
-    "babel-jest": "18.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
     "babel-preset-react-native": "1.9.1",
     "eslint": "^3.8.1",
     "eslint-config-rallycoding": "^3.2.0",
-    "invariant": "^2.2.2",
-    "jest": "^20.0.1"
-  },
-  "jest": {
-    "preset": "react-native"
+    "invariant": "^2.2.2"
   }
 }
