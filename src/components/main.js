@@ -45,11 +45,11 @@ class Main extends Component {
     }
 
     renderTimer() {
-        const { game } = this.props;
-
-        if (game.inGame) {
-            return <Timer />;
-        }
+        // const { game } = this.props;
+        //
+        // if (game.inGame) {
+        //     return <Timer />;
+        // }
 
         return null;
     }

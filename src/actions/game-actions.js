@@ -1,4 +1,5 @@
 import {
+    END_GAME,
     NEW_GAME,
     UPDATE_SCORE,
     ACTIVATE_SPACE,

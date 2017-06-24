@@ -22,6 +22,10 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		C411BB9A1EFE7A2800CBC635 /* paw.png in Resources */ = {isa = PBXBuildFile; fileRef = C411BB991EFE7A2800CBC635 /* paw.png */; };
+		C411BBB51EFE7A2E00CBC635 /* holmes-head-side.png in Resources */ = {isa = PBXBuildFile; fileRef = C411BBB41EFE7A2E00CBC635 /* holmes-head-side.png */; };
+		C411BBB71EFE7A3200CBC635 /* holmes-head-profile.png in Resources */ = {isa = PBXBuildFile; fileRef = C411BBB61EFE7A3200CBC635 /* holmes-head-profile.png */; };
+		C411BBB91EFE7A3700CBC635 /* holmes-head-back.png in Resources */ = {isa = PBXBuildFile; fileRef = C411BBB81EFE7A3700CBC635 /* holmes-head-back.png */; };
 		C42EFB9F1EFE3F4000F7CCE8 /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = C42EFB9E1EFE3F4000F7CCE8 /* grass.png */; };
 		C42EFBBA1EFE3F5700F7CCE8 /* dirt.png in Resources */ = {isa = PBXBuildFile; fileRef = C42EFBB91EFE3F5700F7CCE8 /* dirt.png */; };
 /* End PBXBuildFile section */
@@ -226,6 +230,10 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		C411BB991EFE7A2800CBC635 /* paw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paw.png; sourceTree = "<group>"; };
+		C411BBB41EFE7A2E00CBC635 /* holmes-head-side.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "holmes-head-side.png"; sourceTree = "<group>"; };
+		C411BBB61EFE7A3200CBC635 /* holmes-head-profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "holmes-head-profile.png"; sourceTree = "<group>"; };
+		C411BBB81EFE7A3700CBC635 /* holmes-head-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "holmes-head-back.png"; sourceTree = "<group>"; };
 		C42EFB9E1EFE3F4000F7CCE8 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
 		C42EFBB91EFE3F5700F7CCE8 /* dirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirt.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -333,6 +341,10 @@
 			isa = PBXGroup;
 			children = (
 				C42EFBB91EFE3F5700F7CCE8 /* dirt.png */,
+				C411BBB61EFE7A3200CBC635 /* holmes-head-profile.png */,
+				C411BBB41EFE7A2E00CBC635 /* holmes-head-side.png */,
+				C411BBB81EFE7A3700CBC635 /* holmes-head-back.png */,
+				C411BB991EFE7A2800CBC635 /* paw.png */,
 				C42EFB9E1EFE3F4000F7CCE8 /* grass.png */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -707,10 +719,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C411BB9A1EFE7A2800CBC635 /* paw.png in Resources */,
 				C42EFB9F1EFE3F4000F7CCE8 /* grass.png in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				C42EFBBA1EFE3F5700F7CCE8 /* dirt.png in Resources */,
+				C411BBB91EFE7A3700CBC635 /* holmes-head-back.png in Resources */,
+				C411BBB51EFE7A2E00CBC635 /* holmes-head-side.png in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				C411BBB71EFE7A3200CBC635 /* holmes-head-profile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

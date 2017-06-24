@@ -3,6 +3,7 @@ export const UPDATE_STATE = 'UPDATE_STATE';
 export const GAMES_FETCH_SUCCESS = 'GAMES_FETCH_SUCCESS';
 
 /* GAME ACTIONS */
+export const END_GAME = 'END_GAME';
 export const NEW_GAME = 'NEW_GAME';
 export const UPDATE_SCORE = 'UPDATE_SCORE';
 export const SELECT_SPACE = 'SELECT_SPACE';
