@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { TouchableHighlight, View } from 'react-native';
+import { TouchableHighlight, Image } from 'react-native';
 
 import * as actions from '../actions';
+
+const pupImg = require('../../ios/pup.png');
+const pupImgSelected = require('../../ios/pup_selected.png');
 
 // const holeImg = require('../../ios/hole.png');
 // const pawImg = require('../../ios/paw.png');
@@ -68,7 +71,7 @@ class Space extends Component {
 
     makeActive() {
         const that = this;
-        const randomValue = ((Math.random() * (11 - 1)) + 1);
+        const randomValue = ((Math.floor(Math.random()) * (11 - 1)) + 1);
         let value = 200;
         let mSeconds = 3;
 
@@ -98,43 +101,38 @@ class Space extends Component {
     renderPersonImg() {
         const { selected, value } = this.state;
         if (value !== 0 && value !== null) {
-            let color = 'red';
-            // let personImg = 'mattImg';
+            let personImg = pupImg;
 
-            if (value === 200) {
-                color = 'pink';
-                // personImg = 'annaImg';
-            } else if (value === 500) {
-                color = 'yellow';
-                // personImg = 'aliImg';
-            } else if (value === 1000) {
-                color = 'orange';
-                // personImg = 'pupImg';
-            }
-
+        //     // if (value === 200) {
+        //     //     // personImg = 'annaImg';
+        //     // } else if (value === 500) {
+        //     //     // personImg = 'aliImg';
+        //     // } else if (value === 1000) {
+        //     //     // personImg = 'pupImg';
+        //     // }
+        //
             if (selected) {
-                color = 'blue';
+                personImg = pupImgSelected;
                 // personImg = `${personImg}Selected`;
             }
-            return <View style={{ zIndex: 6, backgroundColor: color, flex: 1 }} />;
-            // return <Image source={personImg} style={{ zIndex: 6 }} />;
-        // } else if (selected) {
-            // return <Image source={pawImg} style={{ zIndex: 6 }} />;
-
-            // <Image source={holeImg} style={{ zIndex: 7 }} />
+            return <Image source={personImg} style={{ zIndex: 6, flex: 1 }} />;
+        // // } else if (selected) {
+        //     // return <Image source={pawImg} style={{ zIndex: 6 }} />;
+        //
+        //     // <Image source={holeImg} style={{ zIndex: 7 }} />
         }
         return null;
     }
 
     render() {
-        const { key } = this.props;
+        const { num } = this.props;
 
         return (
             <TouchableHighlight
-                onPress={this.selectSpace.bind(this, key)}
-                style={{ width: 80, height: 80 }}
+                onPress={this.selectSpace.bind(this, num)}
+                style={{ width: 80, height: 80, position: 'relative', flexDirection: 'row' }}
             >
-                {this.renderPersonImg()}
+                <Image source={pupImg} style={{ zIndex: 9, flex: 1 }} />;
             </TouchableHighlight>
 
         );
@@ -142,9 +140,9 @@ class Space extends Component {
 }
 
 export default connect((state, ownProps) => {
-    const { key } = ownProps;
+    const { num } = ownProps;
     const { game } = state;
     const inGame = game.inGame;
 
-    return { key, inGame };
+    return { num, inGame };
 }, actions)(Space);
